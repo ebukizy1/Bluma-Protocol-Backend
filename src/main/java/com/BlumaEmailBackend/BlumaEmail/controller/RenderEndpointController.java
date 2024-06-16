@@ -1,14 +1,8 @@
-package com.blocklend.lending.protocol.controller.auth;
-
-import com.blocklend.lending.protocol.dtos.request.RegisterUserRequest;
-import com.blocklend.lending.protocol.dtos.response.AuthenticateUserResponse;
-import com.blocklend.lending.protocol.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import static org.springframework.http.HttpStatus.CREATED;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
