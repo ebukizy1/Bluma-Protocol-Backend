@@ -55,6 +55,11 @@ public class BlumaEventController {
         return ResponseEntity.ok(blumaEmailService.withdrawnFeeEventMail(request));
     }
 
+    @GetMapping("/wakeRender")
+    public ResponseEntity<String> wakeRender() {
+        return ResponseEntity.ok("Render server is awake");
+    }
+
 
 
 
