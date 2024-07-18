@@ -5,6 +5,7 @@ import com.BlumaEmailBackend.BlumaEmail.dtos.request.*;
 import com.BlumaEmailBackend.BlumaEmail.dtos.response.EmailResponse;
 import com.BlumaEmailBackend.BlumaEmail.dtos.response.RecipientResponse;
 import com.BlumaEmailBackend.BlumaEmail.exception.EmptyEmailInputException;
+import com.stripe.param.PaymentIntentCreateParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
@@ -76,6 +77,9 @@ public class BlumaMailServiceImpl  implements  BlumaEmailService{
 
     @Override
     public EmailResponse purchaseTicketMail(PurchaseTicketRequest request) {
+        PaymentIntentCreateParams params =
+                PaymentIntentCreateParams.builder()
+                        .build();
         RecipientResponse recipientResponse =  recipientDetails(request.getEmail());
         final Context context = new Context();
         assert recipientResponse.getUsername() != null;

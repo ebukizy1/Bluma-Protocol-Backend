@@ -1,259 +1,74 @@
-#!/bin/sh
-# ----------------------------------------------------------------------------
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-#
-#    https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
-# ----------------------------------------------------------------------------
+### Bluma: The Future of Event Socialization and Networking
 
-# ----------------------------------------------------------------------------
-# Apache Maven Wrapper startup batch script, version 3.3.2
-#
-# Optional ENV vars
-# -----------------
-#   JAVA_HOME - location of a JDK home dir, required when download maven via java source
-#   MVNW_REPOURL - repo url base for downloading maven distribution
-#   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven
-#   MVNW_VERBOSE - true: enable verbose log; debug: trace the mvnw script; others: silence the output
-# ----------------------------------------------------------------------------
+#### Inspiration
+Imagine attending an event where connections and conversations start long before you arrive. Picture an event experience that transcends beyond just buying a ticket and showing up. This is the vision behind Bluma. Born from the realization that traditional event platforms excel at managing ticket sales and registrations but fall short in fostering genuine pre-event interactions, Bluma is here to revolutionize the way we experience events.
 
-set -euf
-[ "${MVNW_VERBOSE-}" != debug ] || set -x
+In today's fast-paced world, networking and socializing at events have become more critical than ever. Yet, many attendees find themselves struggling to break the ice or make meaningful connections in the limited time available during an event. Bluma addresses this challenge head-on by creating a vibrant, interactive space where attendees can connect, socialize, and network well before the event day.
 
-# OS specific support.
-native_path() { printf %s\\n "$1"; }
-case "$(uname)" in
-CYGWIN* | MINGW*)
-  [ -z "${JAVA_HOME-}" ] || JAVA_HOME="$(cygpath --unix "$JAVA_HOME")"
-  native_path() { cygpath --path --windows "$1"; }
-  ;;
-esac
+Bluma transforms the traditional event model into a dynamic social ecosystem. Whether you're attending a professional conference, a music festival, or a local community gathering, Bluma ensures that you walk in already knowing fellow attendees, having formed valuable connections and meaningful conversations.
 
-# set JAVACMD and JAVACCMD
-set_java_home() {
-  # For Cygwin and MinGW, ensure paths are in Unix format before anything is touched
-  if [ -n "${JAVA_HOME-}" ]; then
-    if [ -x "$JAVA_HOME/jre/sh/java" ]; then
-      # IBM's JDK on AIX uses strange locations for the executables
-      JAVACMD="$JAVA_HOME/jre/sh/java"
-      JAVACCMD="$JAVA_HOME/jre/sh/javac"
-    else
-      JAVACMD="$JAVA_HOME/bin/java"
-      JAVACCMD="$JAVA_HOME/bin/javac"
+Our platform empowers event organizers to create dedicated groups for their events, enabling attendees to engage in discussions, share ideas, and build relationships ahead of time. With Bluma, networking begins the moment you register for an event, making every event a memorable and enriching experience.
 
-      if [ ! -x "$JAVACMD" ] || [ ! -x "$JAVACCMD" ]; then
-        echo "The JAVA_HOME environment variable is not defined correctly, so mvnw cannot run." >&2
-        echo "JAVA_HOME is set to \"$JAVA_HOME\", but \"\$JAVA_HOME/bin/java\" or \"\$JAVA_HOME/bin/javac\" does not exist." >&2
-        return 1
-      fi
-    fi
-  else
-    JAVACMD="$(
-      'set' +e
-      'unset' -f command 2>/dev/null
-      'command' -v java
-    )" || :
-    JAVACCMD="$(
-      'set' +e
-      'unset' -f command 2>/dev/null
-      'command' -v javac
-    )" || :
+#### What it does
+Bluma redefines the event experience by providing a comprehensive platform that facilitates pre-event networking and socialization. Key features include:
 
-    if [ ! -x "${JAVACMD-}" ] || [ ! -x "${JAVACCMD-}" ]; then
-      echo "The java/javac command does not exist in PATH nor is JAVA_HOME set, so mvnw cannot run." >&2
-      return 1
-    fi
-  fi
-}
+- **Event Groups**: Event organizers can create dedicated groups where attendees can join discussions, share ideas, and start conversations before the event.
+- **Smart Ticketing**: Utilizing smart contracts, Bluma ensures secure and transparent ticket purchasing and management.
+- **Real-time Chat**: Integrated real-time chat functionalities allow for seamless communication among attendees, fostering connections and interactions.
+- **NFT Minting**: Attendees can mint personalized NFTs as memorabilia or proof of attendance, adding a unique and collectible aspect to the event experience.
+- **Financial Transactions**: Event creators can manage ticket sales and withdraw funds securely, thanks to blockchain-based transactions.
+- **Automated Email Notifications**: For every significant action within the platform, such as group creation, ticket purchase, or NFT minting, automated email notifications keep users informed and engaged.
+- **AI-Powered Content Generation**: Leveraging Gemini AI, event creators can leverage on AI to generate decription and image for them for an event.
 
-# hash string like Java String::hashCode
-hash_string() {
-  str="${1:-}" h=0
-  while [ -n "$str" ]; do
-    char="${str%"${str#?}"}"
-    h=$(((h * 31 + $(LC_CTYPE=C printf %d "'$char")) % 4294967296))
-    str="${str#?}"
-  done
-  printf %x\\n $h
-}
+#### How we built it
+We leveraged a robust tech stack and modern development practices to build Bluma, ensuring scalability, security, and a user-friendly experience.
 
-verbose() { :; }
-[ "${MVNW_VERBOSE-}" != true ] || verbose() { printf %s\\n "${1-}"; }
+- **Smart Contracts**: Managed with Solidity and tested using Foundry, these handle ticket purchasing, event creation, group management, chat functionalities, NFT minting, and Bluma token transactions.
+- **Backend**:
+  - **Spring Boot**: Powers our backend services, handling email notifications and overall server logic.
+  - **Brevo Mail API**: Integrated for efficient and reliable email communication.
+- **Frontend**:
+  - **React**: Ensures a dynamic and responsive user interface.
+- **Technical Stack**:
+  - **Solidity**: For developing smart contracts.
+  - **Foundry**: Used for testing smart contracts.
+  - **Java**: For backend development.
+  - **Spring Boot**: Backend framework.
+  - **Swagger**: For API documentation.
+  - **Brevo Mail API**: Email service integration.
+  - **JavaScript**: For frontend scripting.
+  - **React.js**: For frontend development.
+  - **Gemini AI**: Powers AI-driven content generation, enhancing user interactions.
 
-die() {
-  printf %s\\n "$1" >&2
-  exit 1
-}
+#### Challenges we ran into
+Building Bluma presented several challenges:
 
-trim() {
-  # MWRAPPER-139:
-  #   Trims trailing and leading whitespace, carriage returns, tabs, and linefeeds.
-  #   Needed for removing poorly interpreted newline sequences when running in more
-  #   exotic environments such as mingw bash on Windows.
-  printf "%s" "${1}" | tr -d '[:space:]'
-}
+1. **Group and Chat System**: Integrating a robust group and chat system was a major hurdle. Ensuring real-time communication while maintaining data security and user privacy required careful planning and implementation.
+2. **Email Services**: We aimed for a fully robust email service to handle notifications and user communications. Integrating the Brevo Mail API and ensuring reliable delivery under various conditions involved extensive testing and optimization.
 
-# parse distributionUrl and optional distributionSha256Sum, requires .mvn/wrapper/maven-wrapper.properties
-while IFS="=" read -r key value; do
-  case "${key-}" in
-  distributionUrl) distributionUrl=$(trim "${value-}") ;;
-  distributionSha256Sum) distributionSha256Sum=$(trim "${value-}") ;;
-  esac
-done <"${0%/*}/.mvn/wrapper/maven-wrapper.properties"
-[ -n "${distributionUrl-}" ] || die "cannot read distributionUrl property in ${0%/*}/.mvn/wrapper/maven-wrapper.properties"
+Despite these challenges, our team collaborated effectively to develop innovative solutions, ensuring a seamless user experience.
 
-case "${distributionUrl##*/}" in
-maven-mvnd-*bin.*)
-  MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/
-  case "${PROCESSOR_ARCHITECTURE-}${PROCESSOR_ARCHITEW6432-}:$(uname -a)" in
-  *AMD64:CYGWIN* | *AMD64:MINGW*) distributionPlatform=windows-amd64 ;;
-  :Darwin*x86_64) distributionPlatform=darwin-amd64 ;;
-  :Darwin*arm64) distributionPlatform=darwin-aarch64 ;;
-  :Linux*x86_64*) distributionPlatform=linux-amd64 ;;
-  *)
-    echo "Cannot detect native platform for mvnd on $(uname)-$(uname -m), use pure java version" >&2
-    distributionPlatform=linux-amd64
-    ;;
-  esac
-  distributionUrl="${distributionUrl%-bin.*}-$distributionPlatform.zip"
-  ;;
-maven-mvnd-*) MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/ ;;
-*) MVN_CMD="mvn${0##*/mvnw}" _MVNW_REPO_PATTERN=/org/apache/maven/ ;;
-esac
+#### Accomplishments that we're proud of
+We are proud of several key accomplishments:
 
-# apply MVNW_REPOURL and calculate MAVEN_HOME
-# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>
-[ -z "${MVNW_REPOURL-}" ] || distributionUrl="$MVNW_REPOURL$_MVNW_REPO_PATTERN${distributionUrl#*"$_MVNW_REPO_PATTERN"}"
-distributionUrlName="${distributionUrl##*/}"
-distributionUrlNameMain="${distributionUrlName%.*}"
-distributionUrlNameMain="${distributionUrlNameMain%-bin}"
-MAVEN_USER_HOME="${MAVEN_USER_HOME:-${HOME}/.m2}"
-MAVEN_HOME="${MAVEN_USER_HOME}/wrapper/dists/${distributionUrlNameMain-}/$(hash_string "$distributionUrl")"
+- Successfully implementing a smart contract-based ticketing system, enhancing security and transparency.
+- Creating a fully functional prototype within the hackathon timeframe.
+- Integrating AI-powered content generation through Gemini AI, adding a unique and interactive element to our platform.
+- Receiving positive feedback from early testers, validating our vision and efforts.
 
-exec_maven() {
-  unset MVNW_VERBOSE MVNW_USERNAME MVNW_PASSWORD MVNW_REPOURL || :
-  exec "$MAVEN_HOME/bin/$MVN_CMD" "$@" || die "cannot exec $MAVEN_HOME/bin/$MVN_CMD"
-}
+#### What we learned
+Our journey with Bluma taught us invaluable lessons:
 
-if [ -d "$MAVEN_HOME" ]; then
-  verbose "found existing MAVEN_HOME at $MAVEN_HOME"
-  exec_maven "$@"
-fi
+- **Technical Expertise**: Delving into blockchain and smart contract development expanded our technical skills and knowledge.
+- **User-Centric Design**: Understanding user needs and preferences helped us design a platform that truly enhances the event experience.
+- **Collaboration and Adaptability**: Working as a team to overcome challenges highlighted the importance of effective communication and adaptability.
 
-case "${distributionUrl-}" in
-*?-bin.zip | *?maven-mvnd-?*-?*.zip) ;;
-*) die "distributionUrl is not valid, must match *-bin.zip or maven-mvnd-*.zip, but found '${distributionUrl-}'" ;;
-esac
+#### What's next for Bluma: Redefining Social Connections in Decentralized Events
+The future of Bluma is bright, and we have exciting plans for its development:
 
-# prepare tmp dir
-if TMP_DOWNLOAD_DIR="$(mktemp -d)" && [ -d "$TMP_DOWNLOAD_DIR" ]; then
-  clean() { rm -rf -- "$TMP_DOWNLOAD_DIR"; }
-  trap clean HUP INT TERM EXIT
-else
-  die "cannot create temp dir"
-fi
+- **Enhanced Networking Algorithms**: We aim to integrate advanced algorithms to better match users based on their interests and goals, facilitating more meaningful connections.
+- **Expanded Features**: Introducing features like event reminders, personalized schedules, and post-event follow-ups to enhance user engagement.
+- **Scalability and Partnerships**: Scaling our user base and partnering with event organizers globally to bring Bluma to more events and communities.
+- **Blockchain Integration**: Enhancing our blockchain integration to support a wider range of decentralized applications and services, ensuring Bluma remains at the forefront of innovation.
 
-mkdir -p -- "${MAVEN_HOME%/*}"
-
-# Download and Install Apache Maven
-verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."
-verbose "Downloading from: $distributionUrl"
-verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"
-
-# select .zip or .tar.gz
-if ! command -v unzip >/dev/null; then
-  distributionUrl="${distributionUrl%.zip}.tar.gz"
-  distributionUrlName="${distributionUrl##*/}"
-fi
-
-# verbose opt
-__MVNW_QUIET_WGET=--quiet __MVNW_QUIET_CURL=--silent __MVNW_QUIET_UNZIP=-q __MVNW_QUIET_TAR=''
-[ "${MVNW_VERBOSE-}" != true ] || __MVNW_QUIET_WGET='' __MVNW_QUIET_CURL='' __MVNW_QUIET_UNZIP='' __MVNW_QUIET_TAR=v
-
-# normalize http auth
-case "${MVNW_PASSWORD:+has-password}" in
-'') MVNW_USERNAME='' MVNW_PASSWORD='' ;;
-has-password) [ -n "${MVNW_USERNAME-}" ] || MVNW_USERNAME='' MVNW_PASSWORD='' ;;
-esac
-
-if [ -z "${MVNW_USERNAME-}" ] && command -v wget >/dev/null; then
-  verbose "Found wget ... using wget"
-  wget ${__MVNW_QUIET_WGET:+"$__MVNW_QUIET_WGET"} "$distributionUrl" -O "$TMP_DOWNLOAD_DIR/$distributionUrlName" || die "wget: Failed to fetch $distributionUrl"
-elif [ -z "${MVNW_USERNAME-}" ] && command -v curl >/dev/null; then
-  verbose "Found curl ... using curl"
-  curl ${__MVNW_QUIET_CURL:+"$__MVNW_QUIET_CURL"} -f -L -o "$TMP_DOWNLOAD_DIR/$distributionUrlName" "$distributionUrl" || die "curl: Failed to fetch $distributionUrl"
-elif set_java_home; then
-  verbose "Falling back to use Java to download"
-  javaSource="$TMP_DOWNLOAD_DIR/Downloader.java"
-  targetZip="$TMP_DOWNLOAD_DIR/$distributionUrlName"
-  cat >"$javaSource" <<-END
-	public class Downloader extends java.net.Authenticator
-	{
-	  protected java.net.PasswordAuthentication getPasswordAuthentication()
-	  {
-	    return new java.net.PasswordAuthentication( System.getenv( "MVNW_USERNAME" ), System.getenv( "MVNW_PASSWORD" ).toCharArray() );
-	  }
-	  public static void main( String[] args ) throws Exception
-	  {
-	    setDefault( new Downloader() );
-	    java.nio.file.Files.copy( java.net.URI.create( args[0] ).toURL().openStream(), java.nio.file.Paths.get( args[1] ).toAbsolutePath().normalize() );
-	  }
-	}
-	END
-  # For Cygwin/MinGW, switch paths to Windows format before running javac and java
-  verbose " - Compiling Downloader.java ..."
-  "$(native_path "$JAVACCMD")" "$(native_path "$javaSource")" || die "Failed to compile Downloader.java"
-  verbose " - Running Downloader.java ..."
-  "$(native_path "$JAVACMD")" -cp "$(native_path "$TMP_DOWNLOAD_DIR")" Downloader "$distributionUrl" "$(native_path "$targetZip")"
-fi
-
-# If specified, validate the SHA-256 sum of the Maven distribution zip file
-if [ -n "${distributionSha256Sum-}" ]; then
-  distributionSha256Result=false
-  if [ "$MVN_CMD" = mvnd.sh ]; then
-    echo "Checksum validation is not supported for maven-mvnd." >&2
-    echo "Please disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
-    exit 1
-  elif command -v sha256sum >/dev/null; then
-    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | sha256sum -c >/dev/null 2>&1; then
-      distributionSha256Result=true
-    fi
-  elif command -v shasum >/dev/null; then
-    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | shasum -a 256 -c >/dev/null 2>&1; then
-      distributionSha256Result=true
-    fi
-  else
-    echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available." >&2
-    echo "Please install either command, or disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
-    exit 1
-  fi
-  if [ $distributionSha256Result = false ]; then
-    echo "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised." >&2
-    echo "If you updated your Maven version, you need to update the specified distributionSha256Sum property." >&2
-    exit 1
-  fi
-fi
-
-# unzip and move
-if command -v unzip >/dev/null; then
-  unzip ${__MVNW_QUIET_UNZIP:+"$__MVNW_QUIET_UNZIP"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -d "$TMP_DOWNLOAD_DIR" || die "failed to unzip"
-else
-  tar xzf${__MVNW_QUIET_TAR:+"$__MVNW_QUIET_TAR"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -C "$TMP_DOWNLOAD_DIR" || die "failed to untar"
-fi
-printf %s\\n "$distributionUrl" >"$TMP_DOWNLOAD_DIR/$distributionUrlNameMain/mvnw.url"
-mv -- "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" "$MAVEN_HOME" || [ -d "$MAVEN_HOME" ] || die "fail to move MAVEN_HOME"
-
-clean || :
-exec_maven "$@"
+Bluma is set to revolutionize the way we experience events, making every interaction count and every event a memorable journey. Join us as we redefine social connections in decentralized events!
